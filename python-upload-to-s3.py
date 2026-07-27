@@ -6,8 +6,9 @@ import random
 import uuid
 from datetime import datetime
 def generate_and_upload_mock_data():
-    aws_access_key = "ACCESS_KEY"
-    aws_secret_key = "SECRET"
+    # Keys are pulled from the Databricks secret scope "aws" — never hardcode them.
+    aws_access_key = dbutils.secrets.get(scope="aws", key="access_key")
+    aws_secret_key = dbutils.secrets.get(scope="aws", key="secret_key")
     bucket_name = "BUCKET"
     region = "us-east-2"
     current_time = datetime.now()

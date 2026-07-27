@@ -3,10 +3,14 @@ import pandas as pd
 import boto3
 import io
 
+# Keys are pulled from the Databricks secret scope "aws" — never hardcode them.
+aws_access_key = dbutils.secrets.get(scope="aws", key="access_key")
+aws_secret_key = dbutils.secrets.get(scope="aws", key="secret_key")
+
 s3 = boto3.client(
     's3',
-    aws_access_key_id='ACCESSKEY',
-    aws_secret_access_key='YOUR_SECRET_ACCESS_KEY',
+    aws_access_key_id=aws_access_key,
+    aws_secret_access_key=aws_secret_key,
     region_name='us-east-2'
 )
 
