@@ -1,0 +1,12 @@
+# Python / local interpreter
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# IDE
+.idea/
+.vscode/
+
+# Databricks
+.databricks/
